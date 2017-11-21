@@ -7,6 +7,7 @@ module.exports = {
             './index.js'
         ]
     },
+    devtool: 'eval-source-map',
     output: {
         path: path.join(__dirname, 'build'),
         publicPath: '/',

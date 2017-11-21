@@ -26,10 +26,14 @@ function boxMullerRandom () {
 function randomData(n = 30) {
     return Array.apply(0, Array(n)).map(boxMullerRandom);
 }
+function randomData2(n = 30) {
+    const ar = randomData(n);
+    return ar.map( (y, i) => [i, y] );
+}
 
 const sampleData = randomData(30);
 const sampleData100 = randomData(100);
-
+const sampleData2 = randomData2(30);
 const Header = () =>
     <Sparklines data={sampleData} width={300} height={50}>
         <SparklinesLine style={{ stroke: "white", fill: "none" }} />
@@ -38,6 +42,11 @@ const Header = () =>
 
 const Simple = () =>
     <Sparklines data={sampleData}>
+        <SparklinesLine />
+    </Sparklines>
+
+const Simple2 = () =>
+    <Sparklines data={sampleData2}>
         <SparklinesLine />
     </Sparklines>
 
@@ -295,6 +304,7 @@ const RealWorld9 = () =>
 const demos = {
     'headersparklines': Header,
     'simple': Simple,
+    'simple2': Simple2,
     'simpleCurve': SimpleCurve,
     'customizable1': Customizable1,
     'customizable2': Customizable2,

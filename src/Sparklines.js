@@ -8,6 +8,7 @@ import SparklinesSpots from './SparklinesSpots';
 import SparklinesReferenceLine from './SparklinesReferenceLine';
 import SparklinesNormalBand from './SparklinesNormalBand';
 import dataToPoints from './dataProcessing/dataToPoints';
+import dataToPoints2 from './dataProcessing/dataToPoints2';
 
 class Sparklines extends PureComponent {
 
@@ -44,7 +45,8 @@ class Sparklines extends PureComponent {
 
         if (data.length === 0) return null;
 
-        const points = dataToPoints({ data, limit, width, height, margin, max, min });
+        const points = Array.isArray(data[0]) ? dataToPoints2({ data, limit, width, height, margin, max, min }) :
+		 dataToPoints({ data, limit, width, height, margin, max, min });
 
         const svgOpts = { style: style, viewBox: `0 0 ${width} ${height}`, preserveAspectRatio: preserveAspectRatio };
         if (svgWidth > 0) svgOpts.width = svgWidth;

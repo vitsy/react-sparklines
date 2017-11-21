@@ -1,9 +1,11 @@
 var path = require('path');
 var webpack = require('webpack')
 
+
 module.exports = {
     cache: true,
     entry: './demo.js',
+    devtool: 'eval-source-map',
     output: {
         path: __dirname,
         publicPath: '/',
